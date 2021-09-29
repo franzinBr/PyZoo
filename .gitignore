@@ -1,0 +1,5 @@
+build/
+dist/
+PyZoo.egg-info/
+venv/
+__pycache__/

@@ -1,0 +1,9 @@
+{
+    "type": "{0} must be of {1}, however {2} was entered",
+    "required": "{0} is required",
+    "min": "{0} must be greater than {1}",
+    "max": "{0} must be less than {1}",
+    "regex": "{0} does not have the correct pattern",
+    "equals": "{0} must be {1}",
+    "notequals": "{0} cannot equals {1}"
+}

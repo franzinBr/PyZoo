@@ -1,0 +1,9 @@
+{
+    "type": "[name, rule, value]",
+    "required": "[name]",
+    "min": "[name, rule]",
+    "max": "[name, rule]",
+    "regex": "[name]",
+    "equals": "[name, rule]",
+    "notequals": "[name, rule]"
+}

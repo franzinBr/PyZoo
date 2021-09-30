@@ -1,0 +1,7 @@
+
+class ListSecure(list):
+    def get(self, index, default=None):
+        try:
+            return self.__getitem__(index)
+        except IndexError:
+            return default

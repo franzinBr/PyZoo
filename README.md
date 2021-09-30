@@ -1,5 +1,9 @@
 # PyZoo
+
+[![pypi](https://img.shields.io/pypi/v/pyzoo.svg)](https://pypi.org/project/PyZoo/)
+
 Python library for data validation
+
 
 ### Requirements
 - Python >= 3
@@ -40,4 +44,30 @@ PyZoo.STRING() # 'python', "test", "pyzoo", "name"....
 PyZoo.OBJECT() # {}, {'name': "foo", "age": 19}...
 PyZoo.ARRAY() # [], [0,1,2], [23.2], ['hello', 53]...
 ```
+
+for data validation it is necessary to build a schema, an object that will define the expected data format and its rules
+```python
+schema = PyZoo({
+    'name': PyZoo.STRING(),
+    'email': PyZoo.STRING(),
+    'weight': PyZoo.FLOAT()
+}, ALLOW_OUT_SCHEMA=True)
+```
+with this scheme we define that we will validate 3 data: name (string), email (string) and weight(float)
+if you looked at the constructor carefully, you noticed that there is a flag called `ALLOW_OUT_SCHEMA` this flag defines whether fields that are not defined in the schema are allowed
+
+by default its value is false, that is, if we pass data whose name is different from 'name', 'email' and 'weight' an error will be generated
+in this case, as we set to true, validation ignores data with names that are not in the schema
+
+With that in mind, to validate the data using this schema, we just do the following:
+```python
+ isValid, msgErrors = schema.validate({
+    'name': 'pyzoo',
+    'email': 'test@pyzoo.com',
+    'weight': 0.04
+ })
+```
+the `validate` function returns 2 items, the first being a boolean that defines whether the object is valid or not
+and the second is an array containing all error messages if the object is not valid
+
 

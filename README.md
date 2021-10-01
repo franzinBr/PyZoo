@@ -83,3 +83,19 @@ in addition to validations by type, there are other functions that define new va
 | NOTEQUALS | All    | to be valid the field must not be the same (this function overwrites equal) | PyZoo.ARRAY().NOTEQUALS([])                      |
 | REGEX     | Text   | to be valid the field must follow the regex  pattern                        | PyZoo.STRING().REGEX("[A-Z]{1,2}[0-9][A-Z0-9]?") |
 
+## 💾 Complex Types
+complex types (`ARRAY` and `OBJECT`) are able to contain other types, thus creating nested schemas
+
+```python
+schema = PyZoo({
+    'id': PyZoo.INT().REQUIRED(),
+    'name': PyZoo.STRING().REQUIRED(),
+    'address': PyZoo.OBJECT({
+        'street': PyZoo.STRING(),
+        'number:' PyZoo.INT(),
+        'coordinates': PyZoo.ARRAY([PyZoo.FLOAT(), PyZoo.FLOAT()])
+    }),
+    
+}, ALLOW_OUT_SCHEMA=True)
+```
+

@@ -24,7 +24,7 @@ sudo python3 setup.py install
 sudo python3 setup.py pytest
 ```
 
-## Getting Started
+## 🏁 Getting Started
 to import the module
 ```python
 from PyZoo import PyZoo 
@@ -70,4 +70,16 @@ With that in mind, to validate the data using this schema, we just do the follow
 the `validate` function returns 2 items, the first being a boolean that defines whether the object is valid or not
 and the second is an array containing all error messages if the object is not valid
 
+
+## 🔧 FUNCTIONS
+in addition to validations by type, there are other functions that define new validation rules
+
+| function  | type   | definition                                                                  | example                                          |
+|-----------|--------|-----------------------------------------------------------------------------|--------------------------------------------------|
+| REQUIRED  | All    | the field is now required to become valid                                   | PyZoo.STRING().REQUIRED()                        |
+| MIN       | Number | to be valid, the field must be greater  than or equal to the minimum value. | PyZoo.INT().MIN(2)                               |
+| MAX       | Number | to be valid, the field must be less  than or equal to the minimum value.    | PyZoo.FLOAT().MAX(100)                           |
+| EQUALS    | All    | to be valid the field must be the same (this function overwrites notequal)  | PyZoo.STRING().EQUALS('pyzoo')                   |
+| NOTEQUALS | All    | to be valid the field must not be the same (this function overwrites equal) | PyZoo.ARRAY().NOTEQUALS([])                      |
+| REGEX     | Text   | to be valid the field must follow the regex  pattern                        | PyZoo.STRING().REGEX("[A-Z]{1,2}[0-9][A-Z0-9]?") |
 
